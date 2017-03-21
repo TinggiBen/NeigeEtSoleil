@@ -1,0 +1,42 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Liste des Contrats Locataire</h2>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Date de confirmation</th>
+                <th>Nom de l'immeuble</th>
+                <th>Nom du Locataire</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contratL in contratLs %}
+            <tr>
+                <td><a href="{{ path('adminContratL_show', { 'id': contratL.id }) }}">{{ contratL.id }}</a></td>
+                <td>{% if contratL.dateDebutCL %}{{ contratL.dateDebutCL|date('d-m-Y') }}{% endif %}</td>
+                <td>{% if contratL.dateFinCL %}{{ contratL.dateFinCL|date('d-m-Y') }}{% endif %}</td>
+                <td>{% if contratL.dateSignatureCL %}{{ contratL.dateSignatureCL|date('d-m-Y') }}{% endif %}</td>
+                <td>{{ contratL.appartements }}</td>
+                <td>{{ contratL.tiers }}</td>
+                
+                <td>
+                    <a href="{{ path('adminContratL_PDF', { 'id': contratL.id }) }}"><i class="icon-print"></i></a>
+                    <a href="{{ path('adminContratL_show', { 'id': contratL.id }) }}"><i class="icon-folder-open"></i></a>
+                    <a href="{{ path('adminContratL_edit', { 'id': contratL.id }) }}"><i class="icon-edit"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adminContratL_new') }}">Ajouter un contrat</a>
+        </li>
+    </ul>
+{% endblock %}

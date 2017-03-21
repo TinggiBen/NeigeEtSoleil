@@ -1,0 +1,63 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Appartement</h2>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>ID: </th>
+                <td>{{ appartement.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom de l'immeuble: </th>
+                <td>{{ appartement.nomImmeubleA }}</td>
+            </tr>
+            <tr>
+                <th>Adresse: </th>
+                <td>{{ appartement.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Ville: </th>
+                <td>{{ appartement.villeA }}</td>
+            </tr>
+            <tr>
+                <th>Code Postal: </th>
+                <td>{{ appartement.cpA }}</td>
+            </tr>
+            <tr>
+                <th>Superficie: </th>
+                <td>{{ appartement.superficie }}</td>
+            </tr>
+            <tr>
+                <th>Prix: </th>
+                <td>{{ appartement.prix }}</td>
+            </tr>
+            <tr>
+                <th>Disponible: </th>
+                <td>{% if appartement.disponible %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Description: </th>
+                <td>{{ appartement.description }}</td>
+            </tr>
+            <tr>
+                <th>Image: </th>
+                <td>{{ appartement.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+            
+    <br/>        
+    {{ form_start(delete_form) }}
+        <input class="btn btn-primary" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+    
+    <a href="{{ path('adminAppartements_edit', { 'id': appartement.id }) }}">Modifier</a>   
+    <br/>
+    <a href="{{ path('adminAppartements_new', { 'id': appartement.id }) }}">Ajouter un appartement</a>
+    <br/>
+    <a href="{{ path('adminAppartements_index') }}">Retour à la liste</a>
+
+
+{% endblock %}

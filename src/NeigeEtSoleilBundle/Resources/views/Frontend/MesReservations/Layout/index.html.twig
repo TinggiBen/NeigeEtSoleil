@@ -1,0 +1,48 @@
+{% extends '::layout/layout.html.twig' %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="span3">
+            {% include 'UtilisateurConnecte.twig' %}
+        </div>
+        <div class="span9">
+            <h2>Mes Réservations</h2>
+
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Date d'arrivée</th>
+                        <th>Date de départ</th>
+                        <th>Nom de l'immeuble</th>
+                        <th>Nuits<th>
+                        <th>Prix/nuit</th>
+                        <td>&nbsp;</td> 
+                        <th>Prix total<th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for contratL in contratLs %}
+                    <tr>
+                        <td>{% if contratL.dateDebutCL %}{{ contratL.dateDebutCL|date('d-m-Y') }}{% endif %}</td>
+                        <td>{% if contratL.dateFinCL %}{{ contratL.dateFinCL|date('d-m-Y') }}{% endif %}</td>
+                        <td><a href="{{ path('Appartements', { 'id': contratL.appartements }) }}">{{ contratL.appartements }}</a></td>
+                        
+                        <td>{{date(contratL.dateDebutCL|date ).diff(contratL.dateFinCL).days}}<td>
+                        <td>{{ contratL.appartements.prix }}€/nuit<td>
+                        <td>{{ contratL.appartements.prix * date(contratL.dateDebutCL|date ).diff(contratL.dateFinCL).days}}€<td>
+                        <td>
+                            <a href="{{ path('MesReservations_show', { 'id': contratL.id }) }}"><i class="icon-folder-open"></i></a>
+                        </td>
+                        <td>
+                            <a href="{{ path('MesReservations_PDF', { 'id': contratL.id }) }}"><i class="icon-print"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

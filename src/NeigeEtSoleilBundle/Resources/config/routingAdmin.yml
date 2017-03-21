@@ -1,0 +1,26 @@
+# Administration des appartements
+
+adminAppartements_index:
+    path:     /
+    defaults: { _controller: "NeigeEtSoleilBundle:AppartementsAdmin:index" }
+    methods:  GET
+
+adminAppartements_show:
+    path:     /{id}/show
+    defaults: { _controller: "NeigeEtSoleilBundle:AppartementsAdmin:show" }
+    methods:  GET
+
+adminAppartements_new:
+    path:     /new
+    defaults: { _controller: "NeigeEtSoleilBundle:AppartementsAdmin:new" }
+    methods:  [GET, POST]
+
+adminAppartements_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "NeigeEtSoleilBundle:AppartementsAdmin:edit" }
+    methods:  [GET, POST]
+
+adminAppartements_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "NeigeEtSoleilBundle:AppartementsAdmin:delete" }
+    methods:  DELETE

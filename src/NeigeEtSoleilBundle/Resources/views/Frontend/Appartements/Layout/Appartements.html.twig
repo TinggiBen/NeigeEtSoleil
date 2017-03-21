@@ -1,0 +1,34 @@
+{% extends '::layout/layout.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        {% include '::modulesUsed/navigation.html.twig' %}
+        <div class="span9">
+
+            <ul class="thumbnails">
+                {% for appartement in appartements %}
+                <li class="span3">
+                    <div class="thumbnail">
+                        <img src="{{ appartement.image }}" alt="NeigeEtSoleil" width="300" height="300">
+                        <div class="caption">
+                            <h4>{{ appartement.nomImmeubleA }}</h4>
+                            <p>{{ appartement.prix }} € /nuit, {{ appartement.superficie }}m²</p>
+                            <a class="btn btn-primary" href="{{ path('Presentation', {'id' : appartement.id}) }}">Plus d'infos</a>
+                                {% if is_granted('ROLE_USER') %}<a class="btn btn-success" href="{{ path('Reservation', {'id' : appartement.id}) }}">Réserver !</a>
+                                {% else %}<a class="btn btn-success" href="{{ path('fos_user_security_login') }}">Réserver !</a> {% endif %}
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+             
+            </ul>
+            <div class="navigation">
+                {{ knp_pagination_render(appartements) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,21 @@
+<div class="well">
+    <ul class="nav nav-list">
+        <li>
+            <a href="{{ path('fos_user_profile_show') }}">Mes informations</a>
+        </li>
+        <li>
+            <a href="{{ path('MesReservations_index') }}">Mes Reservations</a>
+        </li>
+        {% if is_granted('ROLE_PROPRIETAIRE') %}
+        <li>
+            <a href="mes-contrats.php">Mes Contrats Propriétaire</a>
+        </li>
+        {% endif %}
+        <li>
+            <a href="{{ path ('fos_user_change_password') }}">Modifier mon mot de passe</a>
+        </li>
+        <li>
+            <a href="{{ path('fos_user_security_logout') }}">Deconnexion</a>
+        </li>
+    </ul>
+</div>

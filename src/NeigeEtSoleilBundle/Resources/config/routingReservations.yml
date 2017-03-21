@@ -1,0 +1,17 @@
+MesReservations_index:
+    path:     /
+    defaults: { _controller: "NeigeEtSoleilBundle:MesReservations:index" }
+    methods:  GET
+
+MesReservations_show:
+    path:     /{id}/show
+    defaults: { _controller: "NeigeEtSoleilBundle:MesReservations:show" }
+    methods:  GET
+
+MesReservations_PDF:
+    path:     /{id}/pdf
+    defaults: { _controller: "NeigeEtSoleilBundle:MesReservations:reservationPDF" }
+    methods:  GET
+
+
+

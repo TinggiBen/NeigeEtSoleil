@@ -1,0 +1,23 @@
+neige_et_soleil_adminAppartements:
+    resource: "@NeigeEtSoleilBundle/Resources/config/routingAdmin.yml"
+    prefix:   /admin/appartements/
+    
+neige_et_soleil_adminContratL:
+    resource: "@NeigeEtSoleilBundle/Resources/config/routingAdminContrat.yml"
+    prefix:   /admin/contratl/
+
+Appartements:
+    path:     /
+    defaults: { _controller: NeigeEtSoleilBundle:Appartements:appartements }
+    
+Presentation:
+    path:     /appartements/{id}
+    defaults: { _controller: NeigeEtSoleilBundle:Appartements:presentation }
+
+Reservation:
+    path:     /appartements/{id}/reservation
+    defaults: { _controller: NeigeEtSoleilBundle:Reservation:reservation }
+    
+neige_et_soleil_MesReservations:
+        resource: "@NeigeEtSoleilBundle/Resources/config/routingReservations.yml"
+        prefix:   profile/mes-reservations

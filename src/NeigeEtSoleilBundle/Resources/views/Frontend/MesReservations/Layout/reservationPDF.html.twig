@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Ma réservation</title>
+        <link href="./css/reservation.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Ma Réservation</h1>
+        <img src="img/holder.png">
+        <table id="enTete">
+            <tr>
+                <td colspan="1"></td>
+                <td colspan="1"><h1>Neige & Soleil</h1></td>
+                <td colspan="1"></td>
+            </tr>
+            <tr>
+                <td width="80">Page</td>
+                <td width="120">Référence</td>
+            </tr>
+            <tr>
+                <td class="color">[[page_nb]]</td>
+                <td class="color"># {{ contratL.id }}</td>
+            </tr>
+        </table>
+        <ul id="coordonnes">
+            <li>{{ contratL.tiers.nom }} {{ contratL.tiers.prenom }}</li>
+            <li>{{ contratL.tiers.adresse }}, {{ contratL.tiers.ville }}</li>
+            <li>{{ contratL.tiers.email }}</li>
+        </ul>
+        <table id="entity">
+            <tr>
+                <td width="140">Nom de l'immeuble</td>
+                <td width="140">Date d'arrivée</td>
+                <td width="140">Date de départ</td>              
+                <td width="130">Nombre de nuit</td>
+                <td width="140">Prix par nuit</td>
+            </tr>
+                <tr>
+                    <td class="color">{{ contratL.appartements }}</td>
+                    <td class="color">{% if contratL.dateDebutCL %}{{ contratL.dateDebutCL|date('d-m-Y') }}{% endif %}</td>
+                    <td class="color">{% if contratL.dateFinCL %}{{ contratL.dateFinCL|date('d-m-Y') }}{% endif %}</td>
+                    <td class="color">{{date(contratL.dateDebutCL|date ).diff(contratL.dateFinCL).days}}</td>
+                    <td class="color">{{ contratL.appartements.prix }}€</td>
+                </tr>
+        </table>
+        <table id="total">
+            <tr>
+                <td width="110">Prix Total :</td>
+                <td width="100" class="color">{{ contratL.appartements.prix * date(contratL.dateDebutCL|date ).diff(contratL.dateFinCL).days}}€</td>
+            </tr>
+        </table>
+        <div id="footer">
+            <span>-- Neige & soleil - 4 rue Saint-Jacques, 05470 Aiguilles - www.neigeetsoleil.com --</span>
+        </div>
+    </body>
+</html>

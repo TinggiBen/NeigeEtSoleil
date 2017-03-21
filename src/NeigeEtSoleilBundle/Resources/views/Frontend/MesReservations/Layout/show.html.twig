@@ -1,0 +1,28 @@
+{% extends '::layout/layout.html.twig' %}
+
+{% block body %}
+    <h1>Ma réservation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contratL.id }}</td>
+            </tr>
+            <tr>
+                <th>Datedebutcl</th>
+                <td>{% if contratL.dateDebutCL %}{{ contratL.dateDebutCL|date('d-m-Y') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefincl</th>
+                <td>{% if contratL.dateFinCL %}{{ contratL.dateFinCL|date('d-m-Y') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datesignaturecl</th>
+                <td>{% if contratL.dateSignatureCL %}{{ contratL.dateSignatureCL|date('d-m-Y') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <a href="{{ path('MesReservations_index') }}">Retour</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Ajouter un Contrat</h2>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('adminContratL_index') }}">Retour à la liste</a>
+        </li>
+    </ul>
+{% endblock %}

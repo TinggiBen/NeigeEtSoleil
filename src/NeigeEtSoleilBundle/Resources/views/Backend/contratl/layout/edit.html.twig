@@ -1,0 +1,16 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Modifier un Contrat Locataire</h2>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+        <input class="btn btn-primary" type="submit" value="Modifier" />
+    {{ form_end(edit_form) }}
+
+    {{ form_start(delete_form) }}
+        <input class="btn btn-primary" type="submit" value="Supprimer">
+    {{ form_end(delete_form) }}
+    <a href="{{ path('adminAppartements_index') }}">Retour à la liste</a>
+
+{% endblock %}

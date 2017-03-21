@@ -1,0 +1,43 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Contrat Locataire</h2>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>ID: </th>
+                <td>{{ contratL.id }}</td>
+            </tr>
+            <tr>
+                <th>Date de début: </th>
+                <td>{% if contratL.dateDebutCL %}{{ contratL.dateDebutCL|date('d-m-Y') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date de fin: </th>
+                <td>{% if contratL.dateFinCL %}{{ contratL.dateFinCL|date('d-m-Y') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date de confirmation: </th>
+                <td>{% if contratL.dateSignatureCL %}{{ contratL.dateSignatureCL|date('d-m-Y') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nom Locataire: </th>
+                <td>{{ contratL.tiers }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/>        
+    {{ form_start(delete_form) }}
+        <input class="btn btn-primary" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+    
+    <a href="{{ path('adminContratL_edit', { 'id': contratL.id }) }}">Modifier</a>   
+    <br/>
+    <a href="{{ path('adminContratL_new', { 'id': contratL.id }) }}">Ajouter un contrat</a>
+    <br/>
+    <a href="{{ path('adminContratL_index') }}">Retour à la liste</a>
+    
+    
+{% endblock %}

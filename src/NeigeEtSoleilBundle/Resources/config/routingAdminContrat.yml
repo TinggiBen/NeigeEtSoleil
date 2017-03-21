@@ -1,0 +1,31 @@
+# Administration des Contrats Locataire
+
+adminContratL_index:
+    path:     /
+    defaults: { _controller: "NeigeEtSoleilBundle:ContratLAdmin:index" }
+    methods:  GET
+
+adminContratL_show:
+    path:     /{id}/show
+    defaults: { _controller: "NeigeEtSoleilBundle:ContratLAdmin:show" }
+    methods:  GET
+
+adminContratL_new:
+    path:     /new
+    defaults: { _controller: "NeigeEtSoleilBundle:ContratLAdmin:new" }
+    methods:  [GET, POST]
+
+adminContratL_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "NeigeEtSoleilBundle:ContratLAdmin:edit" }
+    methods:  [GET, POST]
+
+adminContratL_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "NeigeEtSoleilBundle:ContratLAdmin:delete" }
+    methods:  DELETE
+    
+adminContratL_PDF:
+    path:     /{id}/pdf
+    defaults: { _controller: "NeigeEtSoleilBundle:MesReservations:reservationPDF" }
+    methods:  GET
